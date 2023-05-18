@@ -30,11 +30,11 @@ useEffect(() => {
     }
     const createUserWithEmailPass = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(email, password, auth);
+        return createUserWithEmailAndPassword(auth, email, password)
     }
     const loginWithEmailPass = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email, password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () =>{
         setLoading(true)

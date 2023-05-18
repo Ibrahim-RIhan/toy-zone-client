@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import ActiveLink from "../../Layout/ActiveLink/ActiveLink";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -11,16 +12,14 @@ const Navbar = () => {
             .catch(() => { });
     }
     const loginItems = <>
-        <li>All Toys</li>
-        <li>My Toys</li>
-        <li>Add a Toy</li>
-        <button onClick={handleLogOut} className="btn btn-outline ">
-            Logout
-        </button>
+        <ActiveLink to="/allToys"> <li>All Toys</li></ActiveLink>
+        <ActiveLink to="/myToys"><li>My Toys</li></ActiveLink>
+        <ActiveLink to="/addToy"><li>Add a Toy</li></ActiveLink>
+
     </>
     const listItems = <>
-        <li>Home</li>
-        <li>Blogs</li>
+        <ActiveLink to="/"><li>Home</li></ActiveLink>
+        <ActiveLink to="/blogs"><li>Blogs</li></ActiveLink>
 
     </>
     return (
@@ -54,15 +53,31 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-
-            </div>
-            <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal gap-5 px-1">
                     {listItems}
                     {
                         user ?
                             <>
                                 {loginItems}
+                            </>
+                            :
+                            <>
+                            </>
+
+                    }
+
+                </ul>
+            </div>
+            <div className="navbar-end">
+                <ul className="menu menu-horizontal gap-5 px-1">
+
+                    {
+                        user ?
+                            <>
+                                <img className='w-10 rounded-full ' src={user?.photoURL} alt="" title={user?.displayName} />
+                                <button onClick={handleLogOut} className="btn btn-outline ">
+                                    Logout
+                                </button>
                             </>
                             :
                             <Link to='/login'>

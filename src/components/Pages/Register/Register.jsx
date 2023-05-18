@@ -1,41 +1,71 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
-    return (
-        <div className="hero min-h-screen ">
-        <div className="hero-content flex-col lg:flex-row-reverse gap-5">
-            <div className="text-center lg:text-left">
-                <h1 className="text-5xl font-bold">Register now!</h1>
-                <p className="py-6">Register to add or access Toys of our website</p>
+    const { createUserWithEmailPass, logOut } = useContext(AuthContext);
+    const handleRegisterUser = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoUrl = form.photoUrl.value;
+        const password = form.password.value;
+        const email = form.email.value;
+        createUserWithEmailPass(email, password)
+            .then(result => {
+                console.log(result);
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateProfile(loggedUser, {
+                    displayName: name,
+                    photoURL: photoUrl
+                })
+                    .then(() => { })
+                    .catch(() => { })
+                logOut()
+                    .then(() => { })
+                    .catch(() => { })
+                form.reset()
+            })
+            .catch((error) => { console.log(error) })
 
-            </div>
-            <div className="card flex-shrink-0 w-full max-w-sm hover:shadow-2xl">
-                <form  className="card-body">
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text font-semibold">Name</span>
-                        </label>
-                        <input type="text" placeholder="Your Name" name='displayName' className="input input-bordered" />
-                        <label className="label">
-                            <span className="label-text font-semibold">Email</span>
-                        </label>
-                        <input type="email" placeholder=" Your Email" name='email' className="input input-bordered" required />
-                        <label className="label">
-                            <span className="label-text font-semibold">Password</span>
-                        </label>
-                        <input type="password" placeholder="Your Password" name='password' className="input input-bordered" required />
-                        <label className="label">
-                            <span className="label-text font-semibold">Photo</span>
-                        </label>
-                        <input type="text" placeholder="Give your Photo Url" name='photo' className="input input-bordered" />
-                        <p className='label-text-alt my-3'>Already have a account? Please   <Link className='text-purple-500' to="/login">Login</Link></p>
-                        <button className="btn btn-primary">Register</button>
-                    </div>
-                </form>
-            </div>
+
+    }
+    return (
+        <div style={{ height: '100vh' }} className=" flex justify-center items-center">
+            <form onSubmit={handleRegisterUser} className="card shadow-lg card-normal p-5 bg-base-200 border-double border-4 border-blue-400">
+                <h1 className="text-5xl my-5 font-bold text-center">Register</h1>
+                <div className=" flex justify-between gap-3 ">
+                    <label className="input-group input-group-vertical">
+                        <span className="p-3">Name</span>
+                        <input type="text" name="name" required placeholder="Your Name" className="input input-bordered" />
+                    </label>
+                    <label className="input-group input-group-vertical">
+                        <span className="p-3">Photo URL </span>
+                        <input type="text" name="photoUrl" required placeholder="Your Photo" className="input input-bordered" />
+                    </label>
+                </div>
+                <div className=" flex justify-between gap-3 my-5 ">
+                    <label className="input-group input-group-vertical">
+                        <span className="p-3">Email</span>
+                        <input type="email" name="email" required placeholder="Your Email Address" className="input input-bordered" />
+                    </label>
+                    <label className="input-group input-group-vertical">
+                        <span className="p-3">Password</span>
+                        <input type="password" name="password" required placeholder="Your Password" className="input input-bordered" />
+                    </label>
+                </div>
+
+                <div className="text-center space-y-2">
+                    <input className="btn btn-wide" name="submit" type="submit" value="register" />
+                    <p className='label-text-alt text-center'>Already have a account? Please   <Link className='text-purple-500' to="/login">Login</Link></p>
+                </div>
+
+
+            </form>
         </div>
-    </div>
     );
 };
 

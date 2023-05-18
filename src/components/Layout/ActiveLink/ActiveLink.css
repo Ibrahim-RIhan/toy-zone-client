@@ -1,0 +1,9 @@
+.active {
+    background-color: crimson;
+    color: white;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
