@@ -1,90 +1,101 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const AddToy = () => {
-    const handleAddToy =event =>{
+    const {user} = useContext(AuthContext);
+    console.log(user);
+    const handleAddToy = event => {
         event.preventDefault();
+        const form = event.target;
+        const toyName = form.toyName.value;
+        const toyPicture = form.toyPicture.value;
+        const sellerName = form.sellerName.value;
+        const sellerEmail = form.sellerEmail.value;
+        const quantity = form.quantity.value;
+        const rating = form.rating.value;
+        const price = form.price.value;
+        const details = form.details.value;
+        const category = form.category.value;
+        const NewToy = { toyName, toyPicture, sellerName, sellerEmail, price, details, category, quantity, rating }
+        console.log(NewToy);
+        form.reset();
     }
     return (
 
-        <div>
+        <div className="my-10">
 
-                <h1 className="text-center text-5xl font-bold">Add a Toy </h1>
+            <h1 className="text-center text-5xl my-7 font-bold">Add a Toy </h1>
             <div style={{ height: '100vh' }} className=" flex justify-center items-center">
                 <form onSubmit={handleAddToy} className=" shadow-2xl rounded-xl p-10">
                     <div className="flex gap-5">
                         <div>
                             <label className="input-group input-group-vertical">
                                 <span>Toy Name</span>
-                                <input type="text" placeholder="Your Toy Name" className="input input-bordered" />
+                                <input type="text" name="toyName" placeholder="Your Toy Name" className="input input-bordered" />
                             </label>
                         </div>
+
                         <div>
 
                             <label className="input-group input-group-vertical">
-                                <span>Picture</span>
-                                <input type="text" placeholder="Your Toy Picture" className="input input-bordered" />
+                                <span>Price</span>
+                                <input type="text" name="price" placeholder="Your Toy Price" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
-                    <div className="flex my-5 gap-5  ">
+                    <div className="flex my-3 gap-5  ">
                         <div>
 
                             <label className="input-group input-group-vertical">
                                 <span>Seller Name</span>
-                                <input type="text" placeholder="Seller Name" className="input input-bordered" />
+                                <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="Seller Name" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
 
                             <label className="input-group input-group-vertical">
                                 <span>Seller Email</span>
-                                <input type="text" placeholder="Seller Email" className="input input-bordered" />
+                                <input type="text" name="sellerEmail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
-                    <div className="flex gap-5 my-5  ">
+                    <div className="flex gap-5 my-3  ">
                         <div>
-
-                            <label className="input-group input-group-vertical">
+                            <label className="input-group input-group-vertical ">
                                 <span>Quantity</span>
-                                <input type="text" placeholder="Quantity" className="input input-bordered" />
+                                <input type="text" name="quantity" placeholder="Quantity" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
 
                             <label className="input-group input-group-vertical">
                                 <span>Rating</span>
-                                <input type="text" placeholder="Toy Rating" className="input input-bordered" />
+                                <input type="text" name="rating" placeholder="Toy Rating" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
-                    <div className="flex gap-5  my-5 ">
                         <div>
-
-                            <label className="input-group input-group-vertical">
-                                <span>Price</span>
-                                <input type="text" placeholder="Your Toy Price" className="input input-bordered" />
+                            <label className="input-group input-group-vertical input-group-lg">
+                                <span>Picture</span>
+                                <input type="text" name="toyPicture" placeholder="Your Toy Picture" className="input input-bordered" />
                             </label>
                         </div>
-                        <div>
-
-                            <label className="input-group input-group-vertical">
+                        <div className="my-3">
+                            <label className="input-group input-group-vertical input-group-lg">
                                 <span>Details</span>
-                                <input type="text" placeholder="Your Toy Details" className="input input-bordered" />
+                                <input type="text" name="details" placeholder="Your Toy Details" className="input input-bordered" />
                             </label>
                         </div>
-                    </div>
-                    <div className="grid justify-center" >
-                        <div >
-                            <div className="input-group input-group-vertical">
+                        <div className="input-group input-group-vertical input-group-lg">
                             <span>Pick a Category</span>
-                                <select className="select select-bordered">
-                                    <option>Marvel</option>
-                                    <option>DC Comics</option>
-                                    <option>StarWars</option>
-                                </select>
-                            </div>
+                            <select name="category" className="select select-bordered">
+                                <option>Marvel</option>
+                                <option>DC Comics</option>
+                                <option>StarWars</option>
+                            </select>
                         </div>
+                    <div className="grid justify-center gap-5" >
                         <input className="btn btn-primary btn-wide  my-3" type="submit" value="Add Toy" />
                     </div>
 
@@ -95,5 +106,6 @@ const AddToy = () => {
 
     );
 };
+
 
 export default AddToy;
