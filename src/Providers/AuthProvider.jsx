@@ -52,6 +52,7 @@ useEffect(() => {
 
 
     }
+  
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

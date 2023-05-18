@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(() => { });
+    }
     const loginItems = <>
         <li>All Toys</li>
         <li>My Toys</li>
         <li>Add a Toy</li>
-      <Link to='/login'>
-      <li className="btn btn-warning">Login</li>
-      </Link>
+        <button onClick={handleLogOut} className="btn btn-outline ">
+            Logout
+        </button>
     </>
     const listItems = <>
         <li>Home</li>
         <li>Blogs</li>
-       
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -24,24 +32,43 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {listItems}
+                        {
+                            user ?
+                                <>
+                                    {loginItems}
+                                </>
+                                :
+                                <Link to='/login'>
+                                    <li className="btn btn-warning">Login</li>
+                                </Link>
+                        }
                     </ul>
                 </div>
-               <div className="flex items-center">
-               <Link to="/" className="normal-case font-bold text-2xl">
-                    <img className="w-20" src={logo} alt="" />
-                </Link>
-                <Link to="/" className="normal-case font-bold text-2xl">
-                    Toy<span className="text-orange-400">Zone</span>
-                </Link>
-               </div>
+                <div className="flex items-center">
+                    <Link to="/" className="normal-case font-bold text-2xl">
+                        <img className="w-20" src={logo} alt="" />
+                    </Link>
+                    <Link to="/" className="normal-case font-bold text-2xl">
+                        Toy<span className="text-orange-400">Zone</span>
+                    </Link>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-             
+
             </div>
-            <div className="navbar-end">
-            <ul className="menu menu-horizontal gap-5 px-1">
+            <div className="navbar-end hidden lg:flex">
+                <ul className="menu menu-horizontal gap-5 px-1">
                     {listItems}
-                    {loginItems}
+                    {
+                        user ?
+                            <>
+                                {loginItems}
+                            </>
+                            :
+                            <Link to='/login'>
+                                <li className="btn btn-warning">Login</li>
+                            </Link>
+                    }
                 </ul>
             </div>
         </div>
