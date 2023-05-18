@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
+
 
 
 const AddToy = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     console.log(user);
     const handleAddToy = event => {
         event.preventDefault();
@@ -17,9 +19,28 @@ const AddToy = () => {
         const price = form.price.value;
         const details = form.details.value;
         const category = form.category.value;
-        const NewToy = { toyName, toyPicture, sellerName, sellerEmail, price, details, category, quantity, rating }
-        console.log(NewToy);
-        form.reset();
+        const newToy = { toyName, toyPicture, sellerName, sellerEmail, price, details, category, quantity, rating }
+        console.log(newToy);
+        fetch(`http://localhost:5000/allToys`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+
+            },
+            body: JSON.stringify(newToy)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire(
+                        'Toy Added Successfully',
+                        'success'
+                    )
+                    form.reset();
+                }
+            })
+        // form.reset();
     }
     return (
 
@@ -75,26 +96,26 @@ const AddToy = () => {
                             </label>
                         </div>
                     </div>
-                        <div>
-                            <label className="input-group input-group-vertical input-group-lg">
-                                <span>Picture</span>
-                                <input type="text" name="toyPicture" placeholder="Your Toy Picture" className="input input-bordered" />
-                            </label>
-                        </div>
-                        <div className="my-3">
-                            <label className="input-group input-group-vertical input-group-lg">
-                                <span>Details</span>
-                                <input type="text" name="details" placeholder="Your Toy Details" className="input input-bordered" />
-                            </label>
-                        </div>
-                        <div className="input-group input-group-vertical input-group-lg">
-                            <span>Pick a Category</span>
-                            <select name="category" className="select select-bordered">
-                                <option>Marvel</option>
-                                <option>DC Comics</option>
-                                <option>StarWars</option>
-                            </select>
-                        </div>
+                    <div>
+                        <label className="input-group input-group-vertical input-group-lg">
+                            <span>Picture</span>
+                            <input type="text" name="toyPicture" placeholder="Your Toy Picture" className="input input-bordered" />
+                        </label>
+                    </div>
+                    <div className="my-3">
+                        <label className="input-group input-group-vertical input-group-lg">
+                            <span>Details</span>
+                            <input type="text" name="details" placeholder="Your Toy Details" className="input input-bordered" />
+                        </label>
+                    </div>
+                    <div className="input-group input-group-vertical input-group-lg">
+                        <span>Pick a Category</span>
+                        <select name="category" className="select select-bordered">
+                            <option>Marvel</option>
+                            <option>DC Comics</option>
+                            <option>StarWars</option>
+                        </select>
+                    </div>
                     <div className="grid justify-center gap-5" >
                         <input className="btn btn-primary btn-wide  my-3" type="submit" value="Add Toy" />
                     </div>
