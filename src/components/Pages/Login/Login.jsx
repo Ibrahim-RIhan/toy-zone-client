@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const Login = () => {
+    const { GoogleLogin } = useContext(AuthContext)
+    const handleGoogleLogin = () => {
+        GoogleLogin()
+            .then(result => console.log(result))
+            .catch(err => console.error(err))
+    }
     return (
         <div className="hero min-h-screen ">
             <div className="hero-content flex-col lg:flex-row-reverse gap-5">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                     <p className="py-6"></p>
-                    <button className='btn  btn-outline mb-5 me-2'><FcGoogle /></button>
+                    <button onClick={handleGoogleLogin} className='btn  btn-outline mb-5 me-2'><FcGoogle /></button>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm hover:shadow-2xl">
                     <form className="card-body">
