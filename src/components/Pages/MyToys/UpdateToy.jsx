@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateToy = () => {
@@ -21,7 +22,12 @@ const {_id} = ToyData;
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            if (data.acknowledged) {
+                Swal.fire(
+                    'Toy Updated Successfully',
+                )
+                form.reset(); 
+            }
         });
 
     }

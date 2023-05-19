@@ -25,22 +25,25 @@ const MyToys = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-              fetch(`http://localhost:5000/myToys/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(() => {});
+                fetch(`http://localhost:5000/myToys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then((data) => {
+                        if (data.acknowledged) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Toy has been deleted.',
+                                'succes'
+                            )
+                        }
+                    });
 
             }
-          })
-        
+        })
+
     }
 
     return (
@@ -90,8 +93,6 @@ const MyToys = () => {
                     </tbody>
                 </table>
             </div>
-            {myToys.length}
-
         </div>
     );
 };
