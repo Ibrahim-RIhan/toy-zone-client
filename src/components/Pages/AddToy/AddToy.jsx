@@ -35,7 +35,6 @@ const AddToy = () => {
                 if (data.insertedId) {
                     Swal.fire(
                         'Toy Added Successfully',
-                        'success'
                     )
                     form.reset();
                 }
@@ -45,19 +44,19 @@ const AddToy = () => {
 
         <div className="my-10">
             <h1 className="text-center text-5xl my-7 font-bold">Add a Toy </h1>
-            <div style={{ height: '100vh' }} className=" flex justify-center items-center">
+            <div  className=" flex justify-center items-center">
                 <form onSubmit={handleAddToy} className=" shadow-2xl rounded-xl p-10">
                     <div className="flex gap-5">
                         <div>
                             <label className="input-group input-group-vertical">
                                 <span>Toy Name</span>
-                                <input type="text" name="toyName" placeholder="Your Toy Name" className="input input-bordered" />
+                                <input type="text" name="toyName" required  placeholder="Your Toy Name" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
                             <label className="input-group input-group-vertical">
                                 <span>Price</span>
-                                <input type="text" name="price" placeholder="Your Toy Price" className="input input-bordered" />
+                                <input type="text" name="price" required placeholder="Your Toy Price" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
@@ -65,13 +64,13 @@ const AddToy = () => {
                         <div>
                             <label className="input-group input-group-vertical">
                                 <span>Seller Name</span>
-                                <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="Seller Name" className="input input-bordered" />
+                                <input type="text" required defaultValue={user?.displayName} name="sellerName" placeholder="Seller Name" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
                             <label className="input-group input-group-vertical">
                                 <span>Seller Email</span>
-                                <input type="text" name="sellerEmail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
+                                <input type="text" disabled name="sellerEmail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
@@ -79,32 +78,32 @@ const AddToy = () => {
                         <div>
                             <label className="input-group input-group-vertical ">
                                 <span>Quantity</span>
-                                <input type="text" name="quantity" placeholder="Quantity" className="input input-bordered" />
+                                <input type="text" required name="quantity" placeholder="Quantity" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
 
                             <label className="input-group input-group-vertical">
                                 <span>Rating</span>
-                                <input type="text" name="rating" placeholder="Toy Rating" className="input input-bordered" />
+                                <input type="text" required name="rating" placeholder="Toy Rating" className="input input-bordered" />
                             </label>
                         </div>
                     </div>
                     <div>
                         <label className="input-group input-group-vertical input-group-lg">
                             <span>Picture</span>
-                            <input type="text" name="toyPicture" placeholder="Your Toy Picture" className="input input-bordered" />
+                            <input type="text" required name="toyPicture" placeholder="Your Toy Picture" className="input input-bordered" />
                         </label>
                     </div>
                     <div className="my-3">
                         <label className="input-group input-group-vertical input-group-lg">
                             <span>Details</span>
-                            <input type="text" name="details" placeholder="Your Toy Details" className="input input-bordered" />
+                            <input type="text" required name="details" placeholder="Your Toy Details" className="input input-bordered" />
                         </label>
                     </div>
                     <div className="input-group input-group-vertical input-group-lg">
                         <span>Pick a Category</span>
-                        <select name="category" className="select select-bordered">
+                        <select name="category" required className="select select-bordered">
                             <option>Marvel</option>
                             <option>DC Comics</option>
                             <option>StarWars</option>

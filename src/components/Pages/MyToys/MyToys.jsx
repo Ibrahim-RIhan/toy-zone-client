@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { Link, } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
     const { user, setLoading } = useContext(AuthContext);
@@ -9,32 +10,37 @@ const MyToys = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/myToys/${email}`)
             .then(res => res.json())
-            .then(data => setMyToys(data))
-    }, [email, myToys])
-
-// const handleToyUpdate = id => {
-//     fetch(`http://localhost:5000/myToys/${id}`,{
-//         method : 'PUT',
-//         headers :{
-//             'content-type': 'application/json'
-//         },
-//         body : JSON.stringify(myToys)
-//     })
-
-// }
-
-
+            .then(data => {
+                setLoading(false)
+                setMyToys(data)
+            })
+    }, [email, myToys, setLoading])
 
     const handleToyDelete = id => {
-        console.log(id);
-        fetch(`http://localhost:5000/myToys/${id}`, {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              fetch(`http://localhost:5000/myToys/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
-            .then(data => {
-                setLoading(false)
-                console.log(data);
-            });
+            .then(() => {});
+
+            }
+          })
+        
     }
 
     return (
@@ -77,7 +83,7 @@ const MyToys = () => {
                             {/* Rating  */}
                             <td>{toy?.rating}</td>
                             {/* Button  Update */}
-                            <td><Link to={`/updateToy/${toy._id}`}   className="btn btn-ghost">Update</Link></td>
+                            <td><Link to={`/updateToy/${toy._id}`} className="btn btn-ghost">Update</Link></td>
                             {/* Button Delete  */}
                             <td><button onClick={() => handleToyDelete(toy._id)} className="btn btn-ghost">Delete</button></td>
                         </tr>)}
@@ -85,7 +91,7 @@ const MyToys = () => {
                 </table>
             </div>
             {myToys.length}
-           
+
         </div>
     );
 };
