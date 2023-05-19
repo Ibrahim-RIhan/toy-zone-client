@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const ToyDetails = () => {
     const toyDetails = useLoaderData();
-    console.log(toyDetails);
+   const {toyName, _id, sellerName, price, toyPicture, sellerEmail, details, rating,  category, quantity,} = toyDetails
 
     return (
         <div>

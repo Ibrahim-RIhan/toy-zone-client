@@ -12,13 +12,14 @@ import MyToys from "../components/Pages/MyToys/MyToys";
 import AllToys from "../components/Pages/AllToys/AllToys";
 import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 import ToyDetails from "../components/Pages/AllToys/ToyDetails";
+import UpdateToy from "../components/Pages/MyToys/UpdateToy";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement : <ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -42,17 +43,26 @@ const router = createBrowserRouter([
             },
             {
                 path: "/allToys",
-                element: <PrivateRoute><AllToys></AllToys></PrivateRoute>
+                element: <AllToys></AllToys>
             },
             {
                 path: "/allToys/:id",
                 element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-              loader : ({params}) => fetch(`http://localhost:5000/alltoys/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/alltoys/${params.id}`)
             },
             {
                 path: "/myToys",
-                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+
             },
+            {
+                path: "/updateToy/:id",
+                element: <PrivateRoute><UpdateToy></UpdateToy></PrivateRoute>,
+                loader : ({params}) => fetch(`http://localhost:5000/allToys/${params.id}`)
+            }
+
+
+
         ]
     },
 ]);

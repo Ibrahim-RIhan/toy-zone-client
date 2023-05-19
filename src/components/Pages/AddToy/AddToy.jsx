@@ -40,12 +40,10 @@ const AddToy = () => {
                     form.reset();
                 }
             })
-        // form.reset();
     }
     return (
 
         <div className="my-10">
-
             <h1 className="text-center text-5xl my-7 font-bold">Add a Toy </h1>
             <div style={{ height: '100vh' }} className=" flex justify-center items-center">
                 <form onSubmit={handleAddToy} className=" shadow-2xl rounded-xl p-10">
@@ -56,9 +54,7 @@ const AddToy = () => {
                                 <input type="text" name="toyName" placeholder="Your Toy Name" className="input input-bordered" />
                             </label>
                         </div>
-
                         <div>
-
                             <label className="input-group input-group-vertical">
                                 <span>Price</span>
                                 <input type="text" name="price" placeholder="Your Toy Price" className="input input-bordered" />
@@ -67,14 +63,12 @@ const AddToy = () => {
                     </div>
                     <div className="flex my-3 gap-5  ">
                         <div>
-
                             <label className="input-group input-group-vertical">
                                 <span>Seller Name</span>
                                 <input type="text" defaultValue={user?.displayName} name="sellerName" placeholder="Seller Name" className="input input-bordered" />
                             </label>
                         </div>
                         <div>
-
                             <label className="input-group input-group-vertical">
                                 <span>Seller Email</span>
                                 <input type="text" name="sellerEmail" defaultValue={user?.email} placeholder="Seller Email" className="input input-bordered" />
@@ -119,10 +113,8 @@ const AddToy = () => {
                     <div className="grid justify-center gap-5" >
                         <input className="btn btn-primary btn-wide  my-3" type="submit" value="Add Toy" />
                     </div>
-
                 </form>
             </div>
-
         </div>
 
     );
