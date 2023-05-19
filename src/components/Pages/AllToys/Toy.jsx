@@ -1,16 +1,13 @@
 
+import { Link } from "react-router-dom";
+
 
 // eslint-disable-next-line react/prop-types
 const Toy = ({ toy }) => {
     // eslint-disable-next-line react/prop-types
-    const { toyName, _id,  sellerName,  price,  category, quantity, rating } = toy
-    const handleViewDetails = id =>{
-       
-            fetch(`http://localhost:5000/allToys/${id}`)
-                .then(res => res.json())
-                .then(data => console.log(data))
-      
-    }
+    const { toyName, _id, sellerName, price, category, quantity, } = toy
+   
+
     return (
         <tr>
             <td>
@@ -24,9 +21,13 @@ const Toy = ({ toy }) => {
             <td>{quantity}</td>
 
             <th>
-                <button onClick={()=>handleViewDetails(_id)} className="btn btn-ghost btn-xs">details</button>
+                <Link  to={`/allToys/${_id}`}  className="btn btn-ghost btn-xs">details </Link>
             </th>
+ 
+
+
         </tr>
+
     );
 };
 
