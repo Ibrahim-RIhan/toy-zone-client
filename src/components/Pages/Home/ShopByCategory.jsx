@@ -13,7 +13,6 @@ const ShopByCategory = () => {
             .then(res => res.json())
             .then(data => {
                 setShopToys(data);
-                console.log(data);
             })
     }, [activeTab])
 
