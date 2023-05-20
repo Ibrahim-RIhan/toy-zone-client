@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import errorPic from '../../../assets/Error Page/Error Page.jpg'
+import useTitle from '../../../hooks/useTitle';
 
 const ErrorPage = () => {
+    useTitle('Error')
     return (
         <div className='text-center'>
             <div style={{ height: '100vh' }} className=" flex justify-center items-center">

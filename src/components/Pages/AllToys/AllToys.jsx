@@ -1,7 +1,9 @@
 import  { useEffect, useState } from "react";
 import Toy from "./Toy";
+import useTitle from "../../../hooks/useTitle";
 
 const AllToys = () => {
+  useTitle('All Toys')
   const [allToys, setAllToys] = useState([]);
   const [searchText, setSearchText] = useState(" ");
   const [displayLimit, setDisplayLimit] = useState(20);

@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 
 // eslint-disable-next-line react/prop-types
 const ToyDetails = () => {
+    useTitle('Toy Details');
     const toyDetails = useLoaderData();
     const { toyName, sellerName, price, toyPicture, details, rating, category, quantity, } = toyDetails
 
