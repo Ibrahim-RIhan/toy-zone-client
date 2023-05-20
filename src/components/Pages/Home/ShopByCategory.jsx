@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -40,7 +41,7 @@ const ShopByCategory = () => {
                                     <p className='btn btn-outline '>Rating : {shopToy?.rating} out of 5</p>
                                 </div>
                                     <div className="card-actions">
-                                        <button className="btn btn-primary">View Details</button>
+                                        <Link to={`/viewDetails/${shopToy._id}`} className="btn btn-primary">View Details</Link>
                                     </div>
                                 </div>
                             </div>
