@@ -3,6 +3,7 @@ import Gallery from "./Gallery";
 import ShopByCategory from "./ShopByCategory";
 
 const Home = () => {
+
     return (
         <>
             <Banner></Banner>

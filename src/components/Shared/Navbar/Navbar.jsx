@@ -20,10 +20,9 @@ const Navbar = () => {
     const listItems = <>
         <ActiveLink to="/"><li>Home</li></ActiveLink>
         <ActiveLink to="/blogs"><li>Blogs</li></ActiveLink>
-
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-stone-800 text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -75,7 +74,7 @@ const Navbar = () => {
                         user ?
                             <>
                                 <img className='w-10 rounded-full ' src={user?.photoURL} alt="" title={user?.displayName} />
-                                <button onClick={handleLogOut} className="btn btn-outline ">
+                                <button onClick={handleLogOut} className="btn btn-warning btn-outline ">
                                     Logout
                                 </button>
                             </>

@@ -75,18 +75,18 @@ const MyToys = () => {
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-center">
                             <th>Picture</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
-                            <th>Available Quantity</th>
+                            <th className="text-center">Available Quantity</th>
                             <th>Rating</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-center">
                         {sortedToys.map(toy => <tr
                             key={toy._id}
                         >
@@ -105,7 +105,7 @@ const MyToys = () => {
                             {/* Toy Price  */}
                             <td>{toy?.price}</td>
                             {/* Toy Quantity  */}
-                            <td>{toy?.quantity}</td>
+                            <td className="text-center">{toy?.quantity}</td>
                             {/* Rating  */}
                             <td>{toy?.rating}</td>
                             {/* Button  Update */}
