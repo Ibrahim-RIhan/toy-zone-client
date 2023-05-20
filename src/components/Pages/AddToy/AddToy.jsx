@@ -34,7 +34,7 @@ const AddToy = () => {
                     Swal.fire(
                         'Toy Added Successfully',
                     )
-                    form.reset();
+                    // form.reset();
                 }
             })
     }

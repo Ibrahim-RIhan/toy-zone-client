@@ -3,8 +3,8 @@ import Toy from "./Toy";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [displayLimit, setDisplayLimit] = useState(2);
+  const [searchText, setSearchText] = useState(" ");
+  const [displayLimit, setDisplayLimit] = useState(20);
   const [showMoreClicked, setShowMoreClicked] = useState(false);
 
   useEffect(() => {
@@ -12,6 +12,12 @@ const AllToys = () => {
       .then(res => res.json())
       .then(data => setAllToys(data));
   }, []);
+
+  useEffect(()=> {
+    fetch(`http://localhost:5000/toySearch/${searchText}`)
+    .then(res => res.json())
+    .then(data => setAllToys(data));
+  }, [searchText])
 
   const handleShowMore = () => {
     setDisplayLimit(allToys.length);

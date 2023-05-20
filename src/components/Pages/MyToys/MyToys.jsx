@@ -7,14 +7,30 @@ const MyToys = () => {
     const { user, setLoading } = useContext(AuthContext);
     const email = user.email;
     const [myToys, setMyToys] = useState([]);
+    const [sortedToys, setSortedToys] = useState([]);
+    const [sortOrder, setSortOrder] = useState("");
     useEffect(() => {
         fetch(`http://localhost:5000/myToys/${email}`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false)
                 setMyToys(data)
+                sortToys(data)
             })
-    }, [email, myToys, setLoading])
+    }, [email, myToys, setLoading,])
+
+    const sortToys = (toys) => {
+        const sorted = [...toys].sort((a, b) => {
+            if (sortOrder === "asc") {
+                return a.price - b.price;
+            } else if (sortOrder === "desc") {
+                return b.price - a.price;
+            }
+            return 0;
+        });
+
+        setSortedToys(sorted);
+    };
 
     const handleToyDelete = id => {
         Swal.fire({
@@ -49,6 +65,13 @@ const MyToys = () => {
     return (
         <div>
             <div className="my-7">
+                <div className="flex justify-end my-5">
+                <select className="select select-bordered w-full max-w-xs" onChange={(e) => setSortOrder(e.target.value)}>
+                    <option disabled selected>Sort by Price</option>
+                    <option value="asc">Low to High</option>
+                    <option value="desc">High to Low</option>
+                </select>
+                </div>
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -64,7 +87,7 @@ const MyToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {myToys.map(toy => <tr
+                        {sortedToys.map(toy => <tr
                             key={toy._id}
                         >
                             {/* Image  */}

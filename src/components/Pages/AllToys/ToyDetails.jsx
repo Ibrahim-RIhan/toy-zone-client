@@ -4,21 +4,28 @@ import { useLoaderData } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const ToyDetails = () => {
     const toyDetails = useLoaderData();
-   const {toyName, _id, sellerName, price, toyPicture, sellerEmail, details, rating,  category, quantity,} = toyDetails
+    const { toyName, sellerName, price, toyPicture, details, rating, category, quantity, } = toyDetails
 
     return (
         <div>
-            <div className="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src={toyDetails?.toyPicture} alt="Album" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">{toyDetails?.toyName}</h2>
-                    <p>{toyDetails?.details}</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Listen</button>
-                    </div>
+            <figure className="flex justify-center "><img className="rounded-2xl" src={toyPicture} alt="Album" /></figure>
+            <div className=" text-center p-3 bg-amber-100 my-3 ">
+
+                <h2 className="text-3xl  font-semibold" >Toy Name : {toyName}</h2>
+                <br />
+                <p className="text-red-500  text-xl" >Seller : {sellerName}</p>
+
+                <p>Details : {details}</p>
+                <p>Rating {rating} out of 5</p>
+                <div className="flex gap-5 justify-center my-3 ">
+                    <p className="btn btn-outline">Price : {price}</p>
+                    <p className="btn btn-outline">{category}</p>
                 </div>
+                <p className="text-lg my-2">Available Quantity : {quantity}</p>
+                <button className="btn ">Buy Now</button>
             </div>
         </div>
+
     );
 };
 
