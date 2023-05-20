@@ -9,30 +9,17 @@ const MyToys = () => {
     const { user, setLoading } = useContext(AuthContext);
     const email = user.email;
     const [myToys, setMyToys] = useState([]);
-    const [sortedToys, setSortedToys] = useState([]);
     const [sortOrder, setSortOrder] = useState("");
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys/${email}`)
+        fetch(`http://localhost:5000/myToys/${email}?sortOrder=${sortOrder}`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false)
                 setMyToys(data)
-                sortToys(data)
             })
-    }, [email, myToys, setLoading,])
+    }, [email, myToys, setLoading, sortOrder])
 
-    const sortToys = (toys) => {
-        const sorted = [...toys].sort((a, b) => {
-            if (sortOrder === "asc") {
-                return a.price - b.price;
-            } else if (sortOrder === "desc") {
-                return b.price - a.price;
-            }
-            return 0;
-        });
 
-        setSortedToys(sorted);
-    };
 
     const handleToyDelete = id => {
         Swal.fire({
@@ -55,10 +42,8 @@ const MyToys = () => {
                                 'Deleted!',
                                 'Your Toy has been deleted.',
                                 'succes'
-                            )
-                        }
+                            )}
                     });
-
             }
         })
 
@@ -89,7 +74,7 @@ const MyToys = () => {
                         </tr>
                     </thead>
                     <tbody className="text-center">
-                        {sortedToys.map(toy => <tr
+                        {myToys.map(toy => <tr
                             key={toy._id}
                         >
                             {/* Image  */}
