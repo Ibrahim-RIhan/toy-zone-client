@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 
 
 // eslint-disable-next-line react/prop-types
@@ -18,7 +20,16 @@ const ToyDetails = () => {
                 <p className="text-red-500  text-xl" >Seller : {sellerName}</p>
 
                 <p>Details : {details}</p>
-                <p>Rating {rating} out of 5</p>
+                <Rating
+
+                    placeholderRating={rating}
+                    emptySymbol={<FaRegStar></FaRegStar>}
+                    readonly
+                    placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                    fullSymbol={<FaStar></FaStar>}
+                >
+                </Rating>
+                
                 <div className="flex gap-5 justify-center my-3 ">
                     <p className="btn btn-outline">Price : {price}</p>
                     <p className="btn btn-outline">{category}</p>

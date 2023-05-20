@@ -11,7 +11,7 @@ const MyToys = () => {
     const [myToys, setMyToys] = useState([]);
     const [sortOrder, setSortOrder] = useState("");
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys/${email}?sortOrder=${sortOrder}`)
+        fetch(`https://toy-zone-server.vercel.app/myToys/${email}?sortOrder=${sortOrder}`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false)
@@ -32,7 +32,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myToys/${id}`, {
+                fetch(`https://toy-zone-server.vercel.app/myToys/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -96,9 +96,9 @@ const MyToys = () => {
                             {/* Rating  */}
                             <td>{toy?.rating}</td>
                             {/* Button  Update */}
-                            <td><Link to={`/updateToy/${toy._id}`} className="btn btn-ghost">Update</Link></td>
+                            <td><Link to={`/updateToy/${toy._id}`} className="btn btn-waning">Update</Link></td>
                             {/* Button Delete  */}
-                            <td><button onClick={() => handleToyDelete(toy._id)} className="btn btn-ghost">Delete</button></td>
+                            <td><button onClick={() => handleToyDelete(toy._id)} className="btn btn-info">Delete</button></td>
                         </tr>)}
                     </tbody>
                 </table>

@@ -13,9 +13,9 @@ const Login = () => {
     const { GoogleLogin, loginWithEmailPass } = useContext(AuthContext)
     const handleGoogleLogin = () => {
         GoogleLogin()
-            .then(() =>  {
-                    navigate(from, { replace: true })
-                })
+            .then(() => {
+                navigate(from, { replace: true })
+            })
             .catch(err => console.error(err))
 
     }
@@ -27,31 +27,31 @@ const Login = () => {
         loginWithEmailPass(email, password)
             .then(() => {
                 navigate(from, { replace: true })
-             })
+            })
             .catch(() => { })
     }
 
     return (
         <div style={{ height: '100vh' }} className=" flex justify-center items-center">
-            <form onSubmit={handleLoginForm} className="card shadow-lg  card-normal p-5 bg-base-200 border-double border-4 border-blue-400">
-                <h1 className="text-5xl my-3 font-bold">Login Now</h1>
+            <form onSubmit={handleLoginForm} className="card card-normal shadow-lg p-10 text-white bg-stone-800 border-double border-4 border-blue-400">
+                <h1 className="text-5xl my-5 font-bold">Login Now</h1>
                 <div className="form-control">
-                    <label className="input-group input-group-vertical">
+                    <label className="input-group  text-stone-900 font-semibold input-group-vertical">
                         <span className="p-3">Email</span>
                         <input type="email" name="email" required placeholder="Your Email Address" className="input input-bordered" />
                     </label>
                 </div>
                 <div className="form-control my-5">
-                    <label className="input-group input-group-vertical">
+                    <label className="input-group  text-stone-900 font-semibold input-group-vertical">
                         <span className="p-3">Password</span>
                         <input type="password" name="password" required placeholder="Your Password" className="input input-bordered" />
                     </label>
                 </div>
                 <div className="text-center space-y-2">
                     <input className="btn btn-wide" name="submit" type="submit" value="Login" />
-                    <p className='label-text-alt text-center'>New to ToyZone? Please   <Link className='text-purple-500' to="/register">Register</Link></p>
-                    <p>Or Login With </p>
-                    <button onClick={handleGoogleLogin} className='btn btn-outline mb-3 me-2'><FcGoogle /></button></div>
+                    <p className='label-text-md text-center'>New to ToyZone? Please   <Link className='text-purple-500' to="/register">Register</Link></p>
+
+                    <button onClick={handleGoogleLogin} className='btn btn-outline btn-accent mb-3 me-2'><FcGoogle /> Login With Google</button></div>
 
 
             </form>

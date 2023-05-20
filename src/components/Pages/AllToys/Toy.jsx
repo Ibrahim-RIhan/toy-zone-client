@@ -21,7 +21,7 @@ const Toy = ({ toy }) => {
             <td>{quantity}</td>
 
             <th>
-                <Link  to={`/allToys/${_id}`}  className="btn btn-ghost btn-xs">Details </Link>
+                <Link  to={`/allToys/${_id}`}  className="btn btn-ghost hover:transition-all">Details </Link>
             </th>
  
 

@@ -10,13 +10,13 @@ const AllToys = () => {
   const [showMoreClicked, setShowMoreClicked] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://toy-zone-server.vercel.app/allToys")
       .then(res => res.json())
       .then(data => setAllToys(data));
   }, []);
 
   useEffect(()=> {
-    fetch(`http://localhost:5000/toySearch/${searchText}`)
+    fetch(`https://toy-zone-server.vercel.app/toySearch/${searchText}`)
     .then(res => res.json())
     .then(data => setAllToys(data));
   }, [searchText])
@@ -67,7 +67,7 @@ const AllToys = () => {
       </div >
       <div className="text-center">
       {!showMoreClicked && displayLimit < allToys.length && (
-        <button onClick={handleShowMore} className="btn btn-primary">
+        <button onClick={handleShowMore} className="btn btn-warning">
           Show More
         </button>
       )}

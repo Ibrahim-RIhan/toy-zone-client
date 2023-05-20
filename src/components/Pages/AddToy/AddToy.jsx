@@ -23,7 +23,7 @@ const AddToy = () => {
         const category = form.category.value;
         const newToy = { toyName, toyPicture, sellerName, sellerEmail, price, details, category, quantity, rating }
         console.log(newToy);
-        fetch(`http://localhost:5000/allToys`, {
+        fetch(`https://toy-zone-server.vercel.app/allToys`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AddToy = () => {
     return (
 
         <div className="my-10">
-            <h1 className="text-center text-5xl my-7 font-bold">Add a Toy </h1>
+            <h1 className="text-center text-5xl my-5 font-bold">Add a Toy </h1>
             <div  className=" flex justify-center items-center">
                 <form onSubmit={handleAddToy} className=" shadow-2xl rounded-xl p-10">
                     <div className="flex gap-5">

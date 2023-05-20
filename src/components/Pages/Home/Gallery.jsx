@@ -19,7 +19,7 @@ const Gallery = () => {
             <p className='text-center text-gray-500 my-7 '>See Our recently added toys here </p>
             <div className="grid gap-4" >
                 <div>
-                    <img className="h-[600px] w-full  rounded-lg" src={picture1} alt="" />
+                    <img className="h-full md:h-[600px] w-full  rounded-lg" src={picture1} alt="" />
                 </div>
                 <div className="grid grid-cols-5 gap-4">
                     <div data-aos="fade-right" >

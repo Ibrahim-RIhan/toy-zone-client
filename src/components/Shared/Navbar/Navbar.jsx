@@ -44,7 +44,7 @@ const Navbar = () => {
                 </div>
                 <div className="flex items-center">
                     <Link to="/" className="normal-case font-bold text-2xl">
-                        <img className="w-20" src={logo} alt="" />
+                        <img className="w-20 " src={logo} alt="" />
                     </Link>
                     <Link to="/" className="normal-case font-bold text-2xl">
                         Toy<span className="text-orange-400">Zone</span>
@@ -73,14 +73,14 @@ const Navbar = () => {
                     {
                         user ?
                             <>
-                                <img className='w-10 rounded-full ' src={user?.photoURL} alt="" title={user?.displayName} />
+                                <img className='w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ' src={user?.photoURL} alt="" title={user?.displayName} />
                                 <button onClick={handleLogOut} className="btn btn-warning btn-outline ">
                                     Logout
                                 </button>
                             </>
                             :
                             <Link to='/login'>
-                                <li className="btn btn-warning">Login</li>
+                                <li className="btn btn-accent">Login</li>
                             </Link>
                     }
                 </ul>
