@@ -21,7 +21,7 @@ const ShopByCategory = () => {
                 <Tabs>
                     <TabList>
                         <Tab onClick={() => setActiveTab("Marvel")}>Marvel</Tab>
-                        <Tab onClick={() => setActiveTab("Star Wars")}>StarWars</Tab>
+                        <Tab onClick={() => setActiveTab("Transformers")}>Transformer</Tab>
                         <Tab onClick={() => setActiveTab("DC Comics")}>DC Comics</Tab>
                     </TabList>
                     <div className='grid grid-cols-1 md:grid-cols-3'>
@@ -29,13 +29,16 @@ const ShopByCategory = () => {
                         shopToys.map(shopToy =>
                             <div 
                             key={shopToy._id}
-                            className="card w-96 bg-base-100 shadow-xl">
+                            className="card card-compact w-96 bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
-                                    <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                                    <img src={shopToy?.toyPicture}  className="rounded-xl" />
                                 </figure>
                                 <div className="card-body items-center text-center">
                                     <h2 className="card-title">{shopToy.toyName}</h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                <div className='flex gap-4 my-3'>
+                                <p className='btn btn-outline '>Price : ${shopToy?.price}</p>
+                                    <p className='btn btn-outline '>Rating : {shopToy?.rating} out of 5</p>
+                                </div>
                                     <div className="card-actions">
                                         <button className="btn btn-primary">View Details</button>
                                     </div>
