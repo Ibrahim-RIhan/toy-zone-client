@@ -8,9 +8,9 @@ const TopSellers = () => {
     return (
         <div className="my-20 text-center">
             <h1 className="text-5xl font-bold mb-10">Top rated seller</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-center justify-items-center items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-center justify-items-center items-center">
                 <div className="w-full hover:transition-all hover:border-orange-500  max-w-sm py-5 bg-white border border-gray-200 rounded-lg shadow ">
-                    <div className="flex  flex-col items-center pb-10">
+                    <div className="flex flex-col items-center pb-10">
                         <img className="w-28 h-28  mb-3 rounded-full shadow-lg" src={seller1} alt="Bonnie image" />
                         <Rating
                             placeholderRating={4.8}
