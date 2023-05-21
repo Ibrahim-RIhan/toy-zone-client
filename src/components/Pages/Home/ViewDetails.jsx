@@ -8,7 +8,7 @@ const ViewDetails = () => {
   const { toyName, toyPicture, price, rating, category, sellerName, quantity } = toyDetails;
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl my-10">
-      <figure><img src={toyPicture} alt="Album" /></figure>
+      <figure><img className="h-96 " src={toyPicture} alt="Album" /></figure>
       <div className="card-body">
         <h2 className="card-title">Toy Name : {toyName}</h2>
         <Rating
@@ -24,7 +24,6 @@ const ViewDetails = () => {
         <p>Toy Category : {category}</p>
         <p>Available Quantity : {quantity}</p>
         <p className="text-red-500 font-bold ">Price : {price}</p>
-
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>
         </div>

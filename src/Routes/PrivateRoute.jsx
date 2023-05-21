@@ -9,10 +9,6 @@ import { AuthContext } from '../Providers/AuthProvider';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
-    if (!user) {
-
-        alert('You Have To Login First');
-    }
     if (loading) {
         return <div className='flex justify-center items-center' style={{ height: '100vh' }}>
             <button className="btn loading btn-error btn-xl">Loading</button>

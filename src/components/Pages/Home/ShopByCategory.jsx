@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import { Tab, Tabs, TabList, } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { AuthContext } from '../../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const ShopByCategory = () => {
     const [activeTab, setActiveTab] = useState('Marvel')
     const [shopToys, setShopToys] = useState([]);
+    const { user } = useContext(AuthContext)
     useEffect(() => {
         fetch(`https://toy-zone-server.vercel.app/shopToys/${activeTab}`)
             .then(res => res.json())
@@ -15,6 +18,13 @@ const ShopByCategory = () => {
                 setShopToys(data);
             })
     }, [activeTab])
+    const handleViewDetails = () => {
+        if (!user) {
+            Swal.fire(
+                'You Have to login first'
+            )
+        }
+    }
 
     return (
         <div className='my-14'>
@@ -34,9 +44,9 @@ const ShopByCategory = () => {
 
                                     key={shopToy._id}
                                     className="w-full max-w-sm  border-gray-200 rounded-lg shadow-xl hover:outline hover:outline-2  hover:outline-offset-2 ">
-                                    
-                                        <img className="p-8 h-72 mx-auto  rounded-2xl" src={shopToy?.toyPicture} alt="product image" />
-                                   
+
+                                    <img className="p-8 h-72 mx-auto  rounded-2xl" src={shopToy?.toyPicture} alt="product image" />
+
                                     <div className="px-5 pb-5">
                                         <a href="#">
                                             <h5 className="text-xl font-semibold tracking-tight text-gray-900">{shopToy.toyName}</h5>
@@ -55,20 +65,11 @@ const ShopByCategory = () => {
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <span className="text-3xl font-bold text-gray-900">{shopToy?.price}</span>
-                                            <Link to={`/viewDetails/${shopToy._id}`} className=" transition ease-in-out delay-150hover:-translate-y-1 hover:scale-110 animate-bounce  duration-30
+                                            <Link to={`/viewDetails/${shopToy._id}`} onClick={handleViewDetails} className=" transition ease-in-out delay-150hover:-translate-y-1 hover:scale-110 animate-bounce  duration-30
                                            btn btn-active focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">View Details</Link>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
                                 </div>
-                                // </div>
-
                             )
                         }
                     </div >

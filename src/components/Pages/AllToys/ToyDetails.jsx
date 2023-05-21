@@ -15,11 +15,10 @@ const ToyDetails = () => {
             <figure className="flex justify-center ">
                 <img className="rounded-2xl " src={toyPicture} alt="Album" /></figure>
             <div className=" text-center p-3 bg-amber-100 my-3 ">
-
                 <h2 className="text-3xl text-orange-500 font-semibold" >Toy Name : {toyName}</h2>
                 <br />
                 <p>Details : {details}</p>
-                <p className="text-red-500  space-y-4  text-xl" >Seller : {sellerName}</p>
+                <p className="text-red-500 text-xl" >Seller : {sellerName}</p>
                 <Rating
 
                     placeholderRating={rating}
