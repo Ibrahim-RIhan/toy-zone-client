@@ -12,14 +12,14 @@ const ToyDetails = () => {
 
     return (
         <div>
-            <figure className="flex justify-center "><img className="rounded-2xl" src={toyPicture} alt="Album" /></figure>
+            <figure className="flex justify-center ">
+                <img className="rounded-2xl " src={toyPicture} alt="Album" /></figure>
             <div className=" text-center p-3 bg-amber-100 my-3 ">
 
-                <h2 className="text-3xl  font-semibold" >Toy Name : {toyName}</h2>
+                <h2 className="text-3xl text-orange-500 font-semibold" >Toy Name : {toyName}</h2>
                 <br />
-                <p className="text-red-500  text-xl" >Seller : {sellerName}</p>
-
                 <p>Details : {details}</p>
+                <p className="text-red-500  space-y-4  text-xl" >Seller : {sellerName}</p>
                 <Rating
 
                     placeholderRating={rating}
@@ -35,7 +35,7 @@ const ToyDetails = () => {
                     <p className="btn btn-outline">{category}</p>
                 </div>
                 <p className="text-lg my-2">Available Quantity : {quantity}</p>
-                <button className="btn ">Buy Now</button>
+                <button className="btn btn-accent ">Buy Now</button>
             </div>
         </div>
 

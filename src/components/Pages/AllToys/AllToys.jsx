@@ -29,7 +29,7 @@ const AllToys = () => {
   return (
     <div>
       <h1 className="text-center text-red-400 font-bold text-5xl my-7">
-        Our all toys Collection
+        Our All Toys Collection
       </h1>
       <div className="text-center flex justify-center items-center gap-3">
         <input

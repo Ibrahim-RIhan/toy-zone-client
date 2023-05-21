@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useTitle from "../../../hooks/useTitle";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -15,6 +16,9 @@ const Login = () => {
         GoogleLogin()
             .then(() => {
                 navigate(from, { replace: true })
+                Swal.fire (
+                    'User Login Success'
+                )
             })
             .catch(err => console.error(err))
 
@@ -26,6 +30,9 @@ const Login = () => {
         const password = form.password.value;
         loginWithEmailPass(email, password)
             .then(() => {
+                Swal.fire (
+                    'User Login Success'
+                )
                 navigate(from, { replace: true })
             })
             .catch(() => { })
@@ -50,10 +57,7 @@ const Login = () => {
                 <div className="text-center space-y-2">
                     <input className="btn btn-wide" name="submit" type="submit" value="Login" />
                     <p className='label-text-md text-center'>New to ToyZone? Please   <Link className='text-purple-500' to="/register">Register</Link></p>
-
                     <button onClick={handleGoogleLogin} className='btn btn-outline btn-accent mb-3 me-2'><FcGoogle /> Login With Google</button></div>
-
-
             </form>
         </div>
     );

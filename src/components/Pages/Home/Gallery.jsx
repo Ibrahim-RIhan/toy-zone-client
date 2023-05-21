@@ -22,7 +22,7 @@ const Gallery = () => {
                     <img className="h-full md:h-[600px] w-full  rounded-lg" src={picture1} alt="" />
                 </div>
                 <div className="grid grid-cols-5 gap-4">
-                    <div data-aos="fade-right" >
+                    <div >
                         <img className="h-auto max-w-full rounded-lg" src={picture2} alt="" />
                     </div>
                     <div data-aos="fade-up" >
@@ -34,7 +34,7 @@ const Gallery = () => {
                     <div data-aos="fade-up" >
                         <img className="h-auto max-w-full rounded-lg" src={picture6} alt="" />
                     </div>
-                    <div data-aos="fade-left" >
+                    <div  >
                         <img className="h-auto max-w-full rounded-lg" src={picture7} alt="" />
                     </div>
                 </div>

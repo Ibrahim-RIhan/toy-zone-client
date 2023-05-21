@@ -6,8 +6,8 @@ const ErrorPage = () => {
     useTitle('Error');
     return (
         <div className='text-center'>
-            <div style={{ height: '100vh' }} className=" flex justify-center items-center">
-                <img className='w-1/4 ' src={errorPic} alt="" />
+            <div style={{ height: '80vh' }} className=" flex  justify-center items-center">
+                <img className=' w-fit md:w-1/4 ' src={errorPic} alt="" />
             </div>
             <Link to='/' className='btn btn-error'>Back to Homepage</Link>
         </div>

@@ -11,7 +11,7 @@ import WhatCustomerSay from "./WhatCustomerSay";
 const Home = () => {
 useTitle('Home')
     return (
-        <>
+        < div className="overflow-x-hidden">
             <Banner></Banner>
             <Brands></Brands>
             <ShopByCategory></ShopByCategory>
@@ -20,7 +20,7 @@ useTitle('Home')
             <ConstactUS></ConstactUS>
             <WhatCustomerSay></WhatCustomerSay>
             <NewsLetter></NewsLetter>
-        </>
+        </div>
 
     );
 };

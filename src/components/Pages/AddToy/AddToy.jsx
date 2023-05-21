@@ -36,7 +36,7 @@ const AddToy = () => {
                     Swal.fire(
                         'Toy Added Successfully',
                     )
-                    // form.reset();
+                    form.reset();
                 }
             })
     }
@@ -106,7 +106,7 @@ const AddToy = () => {
                         <select name="category" required className="select select-bordered">
                             <option>Marvel</option>
                             <option>DC Comics</option>
-                            <option>StarWars</option>
+                            <option>Transformers</option>
                         </select>
                     </div>
                     <div className="grid justify-center gap-5" >

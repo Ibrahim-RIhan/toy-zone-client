@@ -1,11 +1,18 @@
 import { useContext } from 'react';
+
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
+
+
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
+    if (!user) {
+
+        alert('You Have To Login First');
+    }
     if (loading) {
         return <div className='flex justify-center items-center' style={{ height: '100vh' }}>
             <button className="btn loading btn-error btn-xl">Loading</button>
@@ -15,7 +22,9 @@ const PrivateRoute = ({ children }) => {
         return children
     }
 
-    return <Navigate state={{ from: location }} to="/login" replace></Navigate>
+    return  <Navigate state={{ from: location }} to="/login" replace></Navigate>
+
+  
 };
 
 export default PrivateRoute;
