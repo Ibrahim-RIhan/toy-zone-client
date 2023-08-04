@@ -11,10 +11,10 @@ import WhatCustomerSay from "./WhatCustomerSay";
 const Home = () => {
 useTitle('Home')
     return (
-        < div className="overflow-x-hidden">
+        < div className="overflow-x-hidden container mx-auto">
             <Banner></Banner>
-            <Brands></Brands>
             <ShopByCategory></ShopByCategory>
+            <Brands></Brands>
             <TopSellers></TopSellers>
             <Gallery></Gallery>
             <ConstactUS></ConstactUS>

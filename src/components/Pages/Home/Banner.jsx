@@ -10,7 +10,7 @@ const Banner = () => {
             Aos.refresh()
         }, [])
         return (
-            <div data-aos-delay="300" data-aos="fade-left" data-aos-duration="4000" className='flex flex-col-reverse md:flex-row border-dashed border-2 p-5 rounded-xl justify-center items-center '>
+            <div data-aos-delay="300" data-aos="fade-left" data-aos-duration="4000" className='flex flex-col-reverse md:flex-row  p-5 rounded-xl justify-center items-center '>
 
                 <div className='space-y-5'>
                     <h1 className='text-7xl font-semibold '>Best Toy Store in Town!</h1>
